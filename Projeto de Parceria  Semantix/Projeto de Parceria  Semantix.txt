@@ -1,0 +1,15 @@
+Vamos avançar com o projeto de parceria? Lembre-se de que se trata de uma atividade opcional. Até o momento, você já adquiriu conhecimento sobre variáveis e tipos de dados, estruturas de dados e metodologia para análise de dados. A partir disso, atente-se às orientações a seguir.  
+
+Antes de começar
+
+Relembre o briefing:  Encontrar uma problemática da vida real que possa ser solucionada através de análise de dados e machine learning. A ideia do projeto é explanar e justificar a relevância do uso de dados para encontrar a solução. 
+
+Neste momento, você irá determinar a problemática e iniciar a coleta de informações. Esse projeto deve ser feito em formato Python através do Jupyter Notebook.
+
+Passo a passo
+
+Com base no briefing, defina qual a problemática do dia a dia escolhida para desenvolver este projeto. 
+Levante as fontes de dados públicas e não confidenciais para a coleta de informações. 
+Como submeter sua entrega? 
+
+Construa seu projeto ao longo do curso. Lembre-se de que a entrega final será realizada para o tutor no final do Módulo 36.
