@@ -3,6 +3,8 @@ import nbformat
 from nbconvert import HTMLExporter
 import os
 
+streamlit run --help
+
 def main():
     st.title("Metodos de Analise Pojeto_2")
 
