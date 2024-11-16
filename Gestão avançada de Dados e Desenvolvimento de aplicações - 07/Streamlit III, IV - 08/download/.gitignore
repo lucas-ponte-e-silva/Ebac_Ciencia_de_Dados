@@ -1,0 +1,51 @@
+# Arquivos Python compilados
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Environments virtuais
+env/
+venv/
+.venv/
+
+# Configurações do Jupyter Notebook
+.ipynb_checkpoints/
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Arquivos de configuração do sistema
+.DS_Store
+Thumbs.db
+
+# Dados sensíveis
+*.env
+.env
+
+# Arquivos gerados por pacotes
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Configurações do editor (VSCode)
+.vscode/
+
+# Arquivos do pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Arquivos do MyPy e outros linters
+.mypy_cache/
+.pytest_cache/
+.coverage
+
+# Arquivos de cache do Jupyter
+.jupyter_cache/
+
+# Arquivos de biblioteca
+site/
