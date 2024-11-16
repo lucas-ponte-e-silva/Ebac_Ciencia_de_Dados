@@ -178,32 +178,73 @@ def main():
 
         st.write('## Proporção de aceite')
         # PLOTS    
+        fig, ax = plt.subplots(1, 2, figsize=(10, 5))
+        
+        # Definindo as cores para cada categoria
+        colors = {'no': 'steelblue', 'yes': 'rosybrown'}
+        
         if graph_type == 'Barras':
-            sns.barplot(x=bank_raw_target_perc.index, 
-                    y='y',
-                    data=bank_raw_target_perc, 
-                    ax=ax[0])
-            ax[0].bar_label(ax[0].containers[0])
-            ax[0].set_title('Dados brutos',
-                        fontweight="bold")
+            # Preparação dos dados
+            bank_raw_target_perc = bank_raw.y.value_counts(normalize=True).to_frame()*100
+            bank_raw_target_perc = bank_raw_target_perc.sort_index()
             
-            sns.barplot(x=bank_target_perc.index, 
-                    y='y', 
-                    data=bank_target_perc, 
-                    ax=ax[1])
-            ax[1].bar_label(ax[1].containers[0])
+            bank_target_perc = bank.y.value_counts(normalize=True).to_frame()*100
+            bank_target_perc = bank_target_perc.sort_index()
+            
+            # Gráfico de dados brutos
+            bars1 = sns.barplot(x=bank_raw_target_perc.index, 
+                              y=bank_raw_target_perc.iloc[:, 0],
+                              ax=ax[0],
+                              palette=colors)
+            
+            # Adicionando rótulos nas barras
+            for i, v in enumerate(bank_raw_target_perc.iloc[:, 0]):
+                ax[0].text(i, v, f'{v:.4f}', 
+                          ha='center', va='bottom')
+            
+            ax[0].set_title('Dados brutos',
+                           fontweight="bold",
+                           pad=20)
+            ax[0].set(ylim=(0, 100))
+            ax[0].set_xlabel('Aceite')  # Rótulo do eixo x
+            ax[0].set_ylabel('Porcentagem (%)')  # Rótulo do eixo y
+            
+            # Gráfico de dados filtrados
+            bars2 = sns.barplot(x=bank_target_perc.index, 
+                              y=bank_target_perc.iloc[:, 0],
+                              ax=ax[1],
+                              palette=colors)
+            
+            # Adicionando rótulos nas barras
+            for i, v in enumerate(bank_target_perc.iloc[:, 0]):
+                ax[1].text(i, v, f'{v:.4f}', 
+                          ha='center', va='bottom')
+                
             ax[1].set_title('Dados filtrados',
-                        fontweight="bold")
+                           fontweight="bold",
+                           pad=20)
+            ax[1].set(ylim=(0, 100))
+            ax[1].set_xlabel('Aceite')  # Rótulo do eixo x
+            ax[1].set_ylabel('Porcentagem (%)')  # Rótulo do eixo y
+            
         else:
-            bank_raw_target_perc.plot(kind='pie', autopct='%.2f', y='y', ax=ax[0])
+            # Gráficos de pizza
+            bank_raw_target_perc.iloc[:, 0].plot(kind='pie', 
+                                                autopct='%.2f%%',
+                                                ax=ax[0],
+                                                colors=[colors[idx] for idx in bank_raw_target_perc.index])
             ax[0].set_title('Dados brutos',
-                        fontweight="bold")
+                           fontweight="bold")
             
-            bank_target_perc.plot(kind='pie', autopct='%.2f', y='y', ax=ax[1])
+            bank_target_perc.iloc[:, 0].plot(kind='pie', 
+                                            autopct='%.2f%%',
+                                            ax=ax[1],
+                                            colors=[colors[idx] for idx in bank_target_perc.index])
             ax[1].set_title('Dados filtrados',
-                        fontweight="bold")
+                           fontweight="bold")
 
-        st.pyplot(plt)
+        plt.tight_layout()
+        st.pyplot(fig)
 
 if __name__ == '__main__':
     main()
